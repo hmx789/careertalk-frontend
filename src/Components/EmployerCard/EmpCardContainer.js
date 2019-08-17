@@ -10,6 +10,7 @@ import EmpCardPresenter from './EmpCardPresenter';
 const propTypes = exact({
   id: PropTypes.string,
   careerfair_id: PropTypes.string,
+  careerfair: PropTypes.object,
   degree_requirements: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
   employer: PropTypes.shape({
     company_url: PropTypes.string.isRequired,
@@ -33,6 +34,8 @@ const EmpCardContainer = props => {
   const [isNotedS, setIsNoted] = useState(props.is_noted);
   const {
     employer,
+    careerfair,
+    careerfair_id,
     hiring_majors,
     hiring_types,
     visa_support,
@@ -43,15 +46,14 @@ const EmpCardContainer = props => {
   } = props;
 
   /** set isLiked state and call method defined in EmployerListContainer  */
-  // REFERENCE: this is what is called when liking on employer card
   const onCardLike = async () => {
     let result;
     if (isLikedS) {
       setIsLiked(!isLikedS);
-      result = await toggleLike({ employerId: employer.id, name: employer.name, liked: false });
+      result = await toggleLike({ fairId: careerfair_id, employerId: employer.id, name: employer.name, liked: false });
     } else {
       setIsLiked(!isLikedS);
-      result = await toggleLike({ employerId: employer.id, name: employer.name, liked: true });
+      result = await toggleLike({ fairId: careerfair_id, employerId: employer.id, name: employer.name, liked: true });
     }
 
     // if toggle like request fails, revert back to original state
@@ -61,7 +63,6 @@ const EmpCardContainer = props => {
   };
 
   /** call toggleModal method defined in EmployerListContainer */
-  // REFERENCE: this is what is called when clicking on employer card
   const onCardClick = event => {
     const {
       target: { nodeName }
@@ -69,7 +70,7 @@ const EmpCardContainer = props => {
 
     if (nodeName !== 'svg' && nodeName !== 'path') {
       toggleModal({
-        selected: { ...props, actions: { setIsLiked, setIsNoted }, state: { isLikedS, isNotedS } }
+        selected: { careerfair, ...props, actions: { setIsLiked, setIsNoted }, state: { isLikedS, isNotedS } }
       });
     }
   };

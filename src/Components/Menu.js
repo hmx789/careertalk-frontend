@@ -217,8 +217,8 @@ const HeaderMenu = props => {
             </DropdownContent>
           </Dropdown>
         ) : (
-          <SideMenuTitle onClick={() => redirectFn('/auth')}>Sign in</SideMenuTitle>
-        )}
+            <SideMenuTitle onClick={() => redirectFn('/auth')}>Sign in</SideMenuTitle>
+          )}
       </MenuItem>
     </>
   );
@@ -313,8 +313,8 @@ const BarMenu = props => {
             <MeTitle>{getMe && getMe.me && getMe.me.full_name}</MeTitle>
           </>
         ) : (
-          <SideMenuTitle onClick={() => redirectFn('/auth')}>Sign in</SideMenuTitle>
-        )}
+            <SideMenuTitle onClick={() => redirectFn('/auth')}>Sign in</SideMenuTitle>
+          )}
       </SideMenuItem>
       <HLine />
       {isLoggedIn && (

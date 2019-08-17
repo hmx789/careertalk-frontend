@@ -17,6 +17,7 @@ import { ErrorBox } from '../ErrorFallback';
 const FavoritesListPresenter = ({
   loading,
   selectedCompany,
+  selectedFair,
   showModal,
   toggleModal,
   toggleLike,
@@ -33,8 +34,9 @@ const FavoritesListPresenter = ({
         </LoadingWrapper>
       )}
       {!loading && !error && employerList
-        && employerList.map(employer => (
+        && employerList.map((employer, index) => (
           <FavoritesListContent
+            key={index}
             fair={employer.careerfair}
             toggleModal={toggleModal}
             toggleLike={toggleLike}
@@ -45,8 +47,7 @@ const FavoritesListPresenter = ({
       {showModal && (
         <EmployerModal
           selectedCompany={selectedCompany}
-          // TODO: need to know exactly which employer careerfair it is
-          selectedFair={employerList[0].careerfair}
+          selectedFair={selectedFair}
           modal={showModal}
           toggleModal={toggleModal}
         />
@@ -68,11 +69,12 @@ const FavoritesListContent = ({ fair, employers, toggleModal, toggleLike }) => {
           </AccordionItemHeading>
           <AccordionItemPanel>
             <FavoritesListGrid>
-              {employers.map(employer => (
+              {employers.map((employer, index) => (
                 <EmployerCard
-                  key={employer.id}
+                  key={index}
                   toggleModal={toggleModal}
                   toggleLike={toggleLike}
+                  careerfair={fair}
                   {...employer}
                 />
               ))}

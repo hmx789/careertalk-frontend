@@ -11,6 +11,7 @@ export const FAVORITE_EMPLOYERS = gql`
         end_time
       }
       liked_employers {
+        careerfair_id
         degree_requirements
         hiring_majors
         hiring_types

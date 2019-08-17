@@ -10,6 +10,8 @@ const Favorites = () => {
   const [modalS, showModal] = useState(false);
   /** selected company state */
   const [selectedCompany, setCompanySelection] = useState(null);
+  /** selected fair state */
+  const [selectedFair, setFairSelection] = useState(null);
   /** employer list state to be shown in the grid */
   const [employerListState, setEmployerList] = useState(null);
   /** graphql queries */
@@ -37,15 +39,13 @@ const Favorites = () => {
     }
     /** set clicked company info to state */
     setCompanySelection(selected);
+    if (selected) setFairSelection(selected.careerfair);
   };
   const toggleLikeMutation = useMutation(TOGGLE_LIKE);
 
 
-  // TODO: how to figure out the fair of the employer that the heart was clicked on?
   const toggleLike = async (props) => {
-    const { fair: { id: fairId } } = favoriteEmployers;
-    const { employerId, name } = props;
-
+    const { fairId, employerId, name } = props;
     try {
       const {
         data: {
@@ -72,6 +72,7 @@ const Favorites = () => {
       toggleLike={toggleLike}
       employerList={employerListState}
       selectedCompany={selectedCompany}
+      selectedFair={selectedFair}
       error={error}
     />
   );
