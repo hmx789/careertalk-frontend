@@ -43,6 +43,7 @@ const EmpCardContainer = props => {
   } = props;
 
   /** set isLiked state and call method defined in EmployerListContainer  */
+  // REFERENCE: this is what is called when liking on employer card
   const onCardLike = async () => {
     let result;
     if (isLikedS) {
@@ -60,6 +61,7 @@ const EmpCardContainer = props => {
   };
 
   /** call toggleModal method defined in EmployerListContainer */
+  // REFERENCE: this is what is called when clicking on employer card
   const onCardClick = event => {
     const {
       target: { nodeName }

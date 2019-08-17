@@ -127,14 +127,14 @@ const EmployerModal = ({ modal, toggleModal, selectedCompany, selectedFair }) =>
               <Loading />
             </LoadingWrapper>
           ) : (
-            <TextareaAutosize
-              rows={3}
-              style={{ boxSizing: 'border-box', fontSize: '17px' }}
-              placeholder="Take note"
-              value={note}
-              onChange={onTextChange}
-            />
-          )}
+              <TextareaAutosize
+                rows={3}
+                style={{ boxSizing: 'border-box', fontSize: '17px' }}
+                placeholder="Take note"
+                value={note}
+                onChange={onTextChange}
+              />
+            )}
           {isNoteTaking && (
             <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '5px' }}>
               <Badge value="Save" type="button" onClick={saveNote} />

@@ -190,7 +190,7 @@ const HeaderMenu = props => {
         <SideMenuIcon>
           <FavoriteListIcon />
         </SideMenuIcon>
-        <SideMenuTitle>Favorites</SideMenuTitle>
+        <SideMenuTitle onClick={() => redirectFn('/favorites')}>Favorites</SideMenuTitle>
       </MenuItem>
       <MenuItem>
         <SideMenuIcon>
@@ -298,7 +298,7 @@ const BarMenu = props => {
         <SideMenuIcon>
           <FavoriteListIcon />
         </SideMenuIcon>
-        <SideMenuTitle>Favorites</SideMenuTitle>
+        <SideMenuTitle onClick={() => redirectFn('/favorites')}>Favorites</SideMenuTitle>
       </SideMenuItem>
       <SideMenuItem>
         <SideMenuIcon>

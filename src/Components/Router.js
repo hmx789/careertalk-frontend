@@ -7,6 +7,7 @@ import EmployerList from '../Routes/EmployerList';
 import About from '../Routes/About';
 import Template from '../Routes/Template';
 import GetInvolved from '../Routes/GetInvolved';
+import FavoritesList from '../Routes/FavoritesList';
 
 const Routes = () => (
   <Switch>
@@ -16,7 +17,7 @@ const Routes = () => (
     <Route path="/template" component={Template} />
     <Route path="/about" component={About} />
     <Route path="/get-invloced" component={GetInvolved} />
-
+    <Route path="/favorites" component={FavoritesList} />
     <Redirect from="*" to="/" />
   </Switch>
 );
